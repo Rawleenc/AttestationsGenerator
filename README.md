@@ -19,4 +19,4 @@ L'attestation est téléchargée depuis le site du gouvernement et est directeme
 ## Installation
 
 Sur Windows, vous trouverez un zip de l'application dans le dossier `AttestationsGenerator\publish`.  
-Décompressez l'archive où vous le souhaitez puis lancez la via le fichier AttestationsGenerator.exe.  
+Décompressez l'archive où vous le souhaitez puis lancez le logiciel via le fichier AttestationsGenerator.exe.  
