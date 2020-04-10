@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="AttestationsGenerator.exe" version="1.0.0.0" publicKeyToken="1fd91ee6afaeeaa4" language="neutral" processorArchitecture="msil" type="win32" />
+  <description asmv2:iconFile="AttestationsGenerator.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="AttestationsGenerator" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="AttestationsGenerator.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          Options de manifeste UAC
+          Pour changer le niveau du contrôle de compte d'utilisateur Windows, remplacez le
+          nœud requestedExecutionLevel par l'une des propositions suivantes.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         Pour utiliser la virtualisation des fichiers et du Registre afin d'assurer
+         une compatibilité ascendante, supprimez le nœud requestedExecutionLevel.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AttestationsGenerator.exe" size="34784">
+      <assemblyIdentity name="AttestationsGenerator" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>uvBoeN5rIGYRmxVDedtFWBp/eCPRJf2TvQ8HQpFoWfA=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.mshtml.dll" size="8032648">
+      <assemblyIdentity name="Microsoft.mshtml" version="7.0.3300.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>tgMNMgyI1wYExBjyAq/P48KMM1se7A/lMwnx1Y9gxT4=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Newtonsoft.Json.dll" size="700336">
+      <assemblyIdentity name="Newtonsoft.Json" version="12.0.0.0" publicKeyToken="30AD4FE6B2A6AEED" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>f5ErKKB8Im4L46z7L1fwUFOKugEA+h8L8sOfGh8dqBQ=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Spire.License.dll" size="98816">
+      <assemblyIdentity name="Spire.License" version="1.3.8.46" publicKeyToken="B1144360237C8B3F" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>A5oXRJv9CVWPY/fCLLNMuMjihbb1n1fwEyd8gzFyP8Q=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Spire.Pdf.dll" size="14567008">
+      <assemblyIdentity name="Spire.Pdf" version="6.2.4.0" publicKeyToken="663F351905198CB3" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>lmBd+xPPygXq1Z8WQvHMMtpCpIK4ViU7i+AlnpGbzoI=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="AttestationsGenerator.exe.config" size="189">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>R+Wg8QGvQVHX8T0ta/qbhH1bXkqY0fRnS3wBV3J0bN8=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="AttestationsGenerator.ico" size="8292">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>INDvJyvUcWgmvm0fxHRbgEnjxJpHZrzLdT3zqhPSR1M=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=DESKTOP-0RFRDVE\lawre" issuerKeyHash="695f5dde9e4f552a89aaabab809689455e07ffd6" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>WEo9hm+Lh66ltsho0IQ+VSgmbamBBZ2a1e4m3sXu8aY=</DigestValue></Reference></SignedInfo><SignatureValue>nJNsxp9UP97P6lBxEJnWJJaXNU9YmDVLx/73DEB9F/Zgsc+N+GTW7eBByHHcLvJgKmW7Xbcfo/x0+LtiynRHOvHiHn/5YtSwjWjJT37qg9LmaSButCICMmibipjzyRiLcGlldilo97hxVDWpTB5+smmSNAcwRt57pCiEMuLxvA0=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>wUwa/mEuH4u5F/nTFs+fxtLD5yX+E6DpNMnP8F5nXhfZbxL42FGvesqnoXEcChWR84/AdPUdJnLlx19r70t6uoznErw/cDA/q6IlS/BftD8n2AFt+Kjua0hsG6ty4Om3QIusQjz4zMPwfRgmePN01Jqs8hcwZ/wsiIYtYjpxWPE=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="a6f1eec5de26eed59a9d0581a96d2628553e84d068c8b6a5ae878b6f863d4a58" Description="" Url=""><as:assemblyIdentity name="AttestationsGenerator.exe" version="1.0.0.0" publicKeyToken="1fd91ee6afaeeaa4" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=DESKTOP-0RFRDVE\lawre</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>fukh7QQ3pK+ZFpF6EFlddgVifdD3NFOkH3tX9iWKe5o=</DigestValue></Reference></SignedInfo><SignatureValue>QF8kTLdMQ7jeRxQiThOprO+gfuQtQuuUlgmkgNIvD8DikWIZ7CK6AezwlV0dOFBcL0SGMkMEXLrx9irqpjW/T7C9CrT12831/Ir3FEv5YQO2QzzR3vDWGmZ7SG5QHC2EaqA8UlEPvLoeht5rlOG/U0KN/75YJIui+Xz0k2BT9ao=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>wUwa/mEuH4u5F/nTFs+fxtLD5yX+E6DpNMnP8F5nXhfZbxL42FGvesqnoXEcChWR84/AdPUdJnLlx19r70t6uoznErw/cDA/q6IlS/BftD8n2AFt+Kjua0hsG6ty4Om3QIusQjz4zMPwfRgmePN01Jqs8hcwZ/wsiIYtYjpxWPE=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIB7TCCAVagAwIBAgIQZwPnSKXtI4FIYzoz3QGPFTANBgkqhkiG9w0BAQsFADA1MTMwMQYDVQQDHioARABFAFMASwBUAE8AUAAtADAAUgBGAFIARABWAEUAXABsAGEAdwByAGUwHhcNMjAwNDEwMTgwODUzWhcNMjEwNDExMDAwODUzWjA1MTMwMQYDVQQDHioARABFAFMASwBUAE8AUAAtADAAUgBGAFIARABWAEUAXABsAGEAdwByAGUwgZ8wDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBAMFMGv5hLh+LuRf50xbPn8bSw+cl/hOg6TTJz/BeZ14X2W8S+NhRr3rKp6FxHAoVkfOPwHT1HSZy5cdfa+9LerqM5xK8P3AwP6uiJUvwX7Q/J9gBbfio7mtIbBurcuDpt0CLrEI8+MzD8H0YJnjzdNSarPIXMGf8LIiGLWI6cVjxAgMBAAEwDQYJKoZIhvcNAQELBQADgYEAAu5t7g5b4frLilEm27/n3RkQI+YrPA8X5oLqEJHd+ekYfxhmPLqKrua6EXJlenZ4/iKXGbi+nHgvPKywLE2hwM5/DzYhKf6yCiDOJ6W1TYXWWfSSsdccpB0nnqXSptgz00psKzojwgogIZZvjOTsFFT/+HBcATAj7tLC8G2EINk=</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>
