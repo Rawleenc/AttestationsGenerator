@@ -106,7 +106,7 @@ namespace AttestationsGenerator
         private void Generate_Profiles_Click(object sender, RoutedEventArgs e)
         {
             string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            string configPath = Path.Combine(path, "AttestationGenerator");
+            string configPath = Path.Combine(path, "AttestationsGenerator");
             Directory.CreateDirectory(configPath);
             if (!File.Exists(configPath + "\\profiles.json"))
             {
@@ -140,7 +140,7 @@ namespace AttestationsGenerator
             try
             {
                 string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                string configPath = Path.Combine(path, "AttestationGenerator");
+                string configPath = Path.Combine(path, "AttestationsGenerator");
                 if (Directory.Exists(configPath))
                 {
                     if (File.Exists(Path.Combine(configPath, "profiles.json")))
