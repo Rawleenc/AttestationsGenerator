@@ -26,6 +26,11 @@ namespace AttestationsGenerator
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            if (Profiles_ComboBox.Items.Count == 0)
+            {
+                MessageBox.Show("Veuillez charger un fichier profiles.json avec des profiles remplis avant de générer une attestation.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.FileName = "attestation-deplacement-fr-" + DateTime.Now.ToString("dd-MM-yyyy-HH-mm") + ".pdf";
             saveFileDialog.Filter = "Fichier PDF | *.pdf";
@@ -154,6 +159,12 @@ namespace AttestationsGenerator
                     Profiles_ComboBox.Items.Clear();
                     foreach (Profile profile in profiles)
                     {
+                        if (Profiles_ComboBox.Items.Contains(profile.Fullname))
+                        {
+                            Profiles_ComboBox.Items.Clear();
+                            MessageBox.Show("Vous ne pouvez pas avoir plusieurs profiles avec le même nom et le même prénom.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                            return false;
+                        }
                         Profiles_ComboBox.Items.Add(profile.Fullname);
                     }
                     if (Profiles_ComboBox.Items.Count > 0)
