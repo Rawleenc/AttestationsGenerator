@@ -18,5 +18,5 @@ L'attestation est téléchargée depuis le site du gouvernement et est directeme
 
 ## Installation
 
-Sur Windows, téléchargez l'installateur ici : https://github.com/Barazok/AttestationsGenerator/releases/download/1.0.0/setup.zip.  
+Sur Windows, téléchargez l'installateur ici : https://github.com/Barazok/AttestationsGenerator/releases/download/v1.0.1/setup.zip.  
 Décompressez le, executez le fichier setup.exe et suivez les instructions.
