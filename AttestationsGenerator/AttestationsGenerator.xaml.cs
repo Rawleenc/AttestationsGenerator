@@ -28,12 +28,14 @@ namespace AttestationsGenerator
         {
             if (Profiles_ComboBox.Items.Count == 0)
             {
-                MessageBox.Show("Veuillez charger un fichier profiles.json avec des profiles remplis avant de générer une attestation.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                _ = MessageBox.Show("Veuillez charger un fichier profiles.json avec des profiles remplis avant de générer une attestation.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.FileName = "attestation-deplacement-fr-" + DateTime.Now.ToString("dd-MM-yyyy-HH-mm") + ".pdf";
-            saveFileDialog.Filter = "Fichier PDF | *.pdf";
+            SaveFileDialog saveFileDialog = new SaveFileDialog
+            {
+                FileName = "attestation-deplacement-fr-" + DateTime.Now.ToString("dd-MM-yyyy-HH-mm") + ".pdf",
+                Filter = "Fichier PDF | *.pdf"
+            };
             if (saveFileDialog.ShowDialog() ?? false)
             {
                 try
@@ -43,9 +45,8 @@ namespace AttestationsGenerator
                     PdfDocument doc = new PdfDocument();
                     doc.LoadFromFile(saveFileDialog.FileName);
                     PdfFormWidget formWidget = doc.Form as PdfFormWidget;
-                    for (int i = 0; i < formWidget.FieldsWidget.List.Count; i++)
+                    foreach (PdfField field in formWidget.FieldsWidget)// for (int i = 0; i < formWidget.FieldsWidget.List.Count; i++)
                     {
-                        PdfField field = formWidget.FieldsWidget.List[i] as PdfField;
                         if (field is PdfTextBoxFieldWidget)
                         {
                             PdfTextBoxFieldWidget textBoxField = field as PdfTextBoxFieldWidget;
@@ -75,9 +76,11 @@ namespace AttestationsGenerator
                                 case "Minute":
                                     textBoxField.Text = DateTime.Now.ToString("mm");
                                     break;
+                                default:
+                                    break;
                             }
                         }
-                        if (field is PdfCheckBoxWidgetFieldWidget)
+                        else if (field is PdfCheckBoxWidgetFieldWidget)
                         {
                             PdfCheckBoxWidgetFieldWidget checkBoxField = field as PdfCheckBoxWidgetFieldWidget;
                             if (checkBoxField.Name == Exit_Reasons_ComboBox.Text)
@@ -87,60 +90,52 @@ namespace AttestationsGenerator
                         }
                     }
                     doc.SaveToFile(saveFileDialog.FileName);
-                    Process.Start("explorer.exe", saveFileDialog.FileName);
+                    _ = Process.Start("explorer.exe", saveFileDialog.FileName);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                    _ = MessageBox.Show(ex.Message, "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
             }
         }
 
-        private Profile GetFromFullName(string fullname)
-        {
-            foreach (Profile profile in profiles)
-            {
-                if (profile.Fullname.Equals(fullname))
-                {
-                    return profile;
-                }
-            }
-            return null;
-        }
+        private Profile GetFromFullName(string fullname) => profiles.Find(profil => profil.Fullname == fullname);
 
         private void Generate_Profiles_Click(object sender, RoutedEventArgs e)
         {
             string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             string configPath = Path.Combine(path, "AttestationsGenerator");
-            Directory.CreateDirectory(configPath);
+            _ = Directory.CreateDirectory(configPath);
             if (!File.Exists(configPath + "\\profiles.json"))
             {
-                List<Profile> templateProfiles = new List<Profile>();
-                templateProfiles.Add(new Profile("Fake 1", "01 Septembre 1901", "Fake Place 1", "Fake Address 1", "Fake City 1"));
-                templateProfiles.Add(new Profile("Fake 2", "02 Octobre 1902", "Fake Place 2", "Fake Address 2", "Fake City 2"));
+                List<Profile> templateProfiles = new List<Profile>
+                {
+                    new Profile("Fake 1", "01 Septembre 1901", "Fake Place 1", "Fake Address 1", "Fake City 1"),
+                    new Profile("Fake 2", "02 Octobre 1902", "Fake Place 2", "Fake Address 2", "Fake City 2")
+                };
                 File.WriteAllText(configPath + "\\profiles.json", JsonConvert.SerializeObject(templateProfiles, Formatting.Indented));
-                MessageBox.Show("Votre fichier profiles.json à été généré.", "Réussite", MessageBoxButton.OK, MessageBoxImage.Information);
+                _ = MessageBox.Show("Votre fichier profiles.json à été généré.", "Réussite", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
-                MessageBox.Show("Vous avez déjà un fichier profiles.json.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                _ = MessageBox.Show("Vous avez déjà un fichier profiles.json.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
         private void Load_Profiles_Click(object sender, RoutedEventArgs e)
         {
-            if (loadProfilesFile())
+            if (LoadProfilesFile())
             {
-                MessageBox.Show("Votre fichier profiles.json à été correctement lu.", "Réussite", MessageBoxButton.OK, MessageBoxImage.Information);
+                _ = MessageBox.Show("Votre fichier profiles.json à été correctement lu.", "Réussite", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            loadProfilesFile();
+            _ = LoadProfilesFile();
         }
 
-        private Boolean loadProfilesFile()
+        private Boolean LoadProfilesFile()
         {
             try
             {
@@ -162,10 +157,10 @@ namespace AttestationsGenerator
                         if (Profiles_ComboBox.Items.Contains(profile.Fullname))
                         {
                             Profiles_ComboBox.Items.Clear();
-                            MessageBox.Show("Vous ne pouvez pas avoir plusieurs profiles avec le même nom et le même prénom.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                            _ = MessageBox.Show("Vous ne pouvez pas avoir plusieurs profiles avec le même nom et le même prénom.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
                             return false;
                         }
-                        Profiles_ComboBox.Items.Add(profile.Fullname);
+                        _ = Profiles_ComboBox.Items.Add(profile.Fullname);
                     }
                     if (Profiles_ComboBox.Items.Count > 0)
                     {
@@ -174,14 +169,14 @@ namespace AttestationsGenerator
                 }
                 else
                 {
-                    Directory.CreateDirectory(configPath);
+                    _ = Directory.CreateDirectory(configPath);
                 }
                 Exit_Reasons_ComboBox.SelectedIndex = 0;
                 return true;
             }
             catch (Exception)
             {
-                MessageBox.Show("Il y a eu un problème pendant la lecture du fichier profiles.json.\r\n\r\nVeuillez le vérifier.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                _ = MessageBox.Show("Il y a eu un problème pendant la lecture du fichier profiles.json.\r\n\r\nVeuillez le vérifier.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
                 Exit_Reasons_ComboBox.SelectedIndex = 0;
                 return false;
             }
