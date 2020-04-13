@@ -9,6 +9,7 @@
     <DockPanel Loaded="Window_Loaded">
         <Menu DockPanel.Dock="Top" Height="23">
             <MenuItem Header="_Options" Height="23">
+                <MenuItem Header="_Créer un profile"  Click="Create_Profile_Click" />
                 <MenuItem Header="_Générer un template de fichier profiles.json"  Click="Generate_Profiles_Click" />
                 <MenuItem Header="_Charger le fichier profiles.json"  Click="Load_Profiles_Click" />
             </MenuItem>

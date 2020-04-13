@@ -1,0 +1,23 @@
+﻿<Window x:Class="AttestationsGenerator.CreateProfile"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AttestationsGenerator"
+        mc:Ignorable="d"
+        Title="Créer un profile" Height="230" Width="320">
+    <Grid>
+        <Label Content="Nom complet : " HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="FullName" HorizontalAlignment="Left" Margin="150,17,0,0" VerticalAlignment="Top" Width="152"/>
+        <Label Content="Date de naissance :" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="DateBirth" HorizontalAlignment="Left" Margin="150,47,0,0" VerticalAlignment="Top" Width="152"/>
+        <Label Content="Lieu de naissance :" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="CityBirth" HorizontalAlignment="Left" Margin="150,77,0,0" VerticalAlignment="Top" Width="152"/>
+        <Label Content="Adresse :" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="Address" HorizontalAlignment="Left" Margin="150,107,0,0" VerticalAlignment="Top" Width="152"/>
+        <Label Content="Ville : " HorizontalAlignment="Left" Margin="10,130,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="City" HorizontalAlignment="Left" Margin="150,137,0,0" VerticalAlignment="Top" Width="152"/>
+        <Button Content="Créer le profile" HorizontalAlignment="Left" Margin="110,170,0,0" VerticalAlignment="Top" Width="100" Click="Create_Profile"/>
+
+    </Grid>
+</Window>
