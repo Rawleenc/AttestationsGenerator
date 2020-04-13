@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace AttestationsGenerator
 {
@@ -18,7 +19,7 @@ namespace AttestationsGenerator
             InitializeComponent();
         }
 
-        private List<TextBox>  get_all_textbox()
+        private List<TextBox>  Get_All_Textbox()
         {
             return new List<TextBox>()
             {
@@ -32,7 +33,12 @@ namespace AttestationsGenerator
 
         private void Create_Profile(object sender, RoutedEventArgs e)
         {
-            foreach (TextBox tb in get_all_textbox())
+            CreateProfileProcess();
+        }
+
+        private void CreateProfileProcess()
+        {
+            foreach (TextBox tb in Get_All_Textbox())
             {
                 if (string.IsNullOrEmpty(tb.Text) || string.IsNullOrWhiteSpace(tb.Text))
                 {
@@ -40,7 +46,20 @@ namespace AttestationsGenerator
                     return;
                 }
             }
-            Profile p = new Profile(FullName.Text, DateBirth.Text, CityBirth.Text, Address.Text, City.Text);
+            Profile p = MainWindow.GetFromFullName(FullName.Text);
+            Boolean newProfile = false;
+            if (p == null)
+            {
+                newProfile = true;
+                p = new Profile(FullName.Text, DateBirth.Text, CityBirth.Text, Address.Text, City.Text);
+            }
+            else
+            {
+                p.BirthDate = DateBirth.Text;
+                p.BirthPlace = CityBirth.Text;
+                p.Address = Address.Text;
+                p.City = City.Text;
+            }
             string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             string configPath = Path.Combine(path, "AttestationsGenerator");
             if (!File.Exists(configPath + "\\profiles.json"))
@@ -51,13 +70,24 @@ namespace AttestationsGenerator
                 };
                 File.WriteAllText(configPath + "\\profiles.json", JsonConvert.SerializeObject(templateProfiles, Formatting.Indented));
                 _ = MessageBox.Show("Votre fichier profiles.json à été généré.", "Réussite", MessageBoxButton.OK, MessageBoxImage.Information);
-            } else
+            }
+            else
             {
-                List<Profile> profiles = JsonConvert.DeserializeObject<List<Profile>>(File.ReadAllText(configPath + "\\profiles.json"));
-                profiles.Add(p);
-                File.WriteAllText(configPath + "\\profiles.json", JsonConvert.SerializeObject(profiles, Formatting.Indented));
+                if (newProfile)
+                {
+                    MainWindow.profiles.Add(p);
+                }
+                File.WriteAllText(configPath + "\\profiles.json", JsonConvert.SerializeObject(MainWindow.profiles, Formatting.Indented));
             }
             this.Close();
+        }
+
+        private void OnKeyUpHandler(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                CreateProfileProcess();
+            }
         }
     }
 }

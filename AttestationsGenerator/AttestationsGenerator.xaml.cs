@@ -17,7 +17,7 @@ namespace AttestationsGenerator
     /// </summary>
     public partial class MainWindow : Window
     {
-        private List<Profile> profiles = new List<Profile>();
+        public static List<Profile> profiles = new List<Profile>();
 
         public MainWindow()
         {
@@ -99,15 +99,12 @@ namespace AttestationsGenerator
             }
         }
 
-        private Profile GetFromFullName(string fullname) => profiles.Find(profil => profil.Fullname == fullname);
+        public static Profile GetFromFullName(string fullname) => profiles.Find(profil => profil.Fullname == fullname);
 
         private void Create_Profile_Click(object sender, RoutedEventArgs e)
         {
             new CreateProfile().ShowDialog();
-            if (LoadProfilesFile())
-            {
-                _ = MessageBox.Show("Votre fichier profiles.json à été correctement lu.", "Réussite", MessageBoxButton.OK, MessageBoxImage.Information);
-            }
+            _ = LoadProfilesFile();
         }
 
         private void Generate_Profiles_Click(object sender, RoutedEventArgs e)
@@ -190,6 +187,44 @@ namespace AttestationsGenerator
                 return false;
             }
 
+        }
+
+        private void Delete_Profile_Click(object sender, RoutedEventArgs e)
+        {
+            if (Profiles_ComboBox.Items.Count == 0)
+            {
+                _ = MessageBox.Show("Aucun profile à supprimer.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            if (MessageBox.Show(String.Format("Vous vous apprêtez à supprimer le profile {0:s}, souhaitez vous vraiment continuer ?.", Profiles_ComboBox.SelectedItem), "Êtes-vous sûr ?", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            {
+                string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                string configPath = Path.Combine(path, "AttestationsGenerator");
+                profiles.Remove(GetFromFullName(Profiles_ComboBox.SelectedItem.ToString()));
+                File.WriteAllText(configPath + "\\profiles.json", JsonConvert.SerializeObject(profiles, Formatting.Indented));
+                _ = LoadProfilesFile();
+                _ = MessageBox.Show("Profile supprimé.", "Réussite", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
+
+        private void Modify_Profile_Click(object sender, RoutedEventArgs e)
+        {
+            if (Profiles_ComboBox.Items.Count == 0)
+            {
+                _ = MessageBox.Show("Aucun profile à modifier.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            Profile profile = GetFromFullName(Profiles_ComboBox.SelectedItem.ToString());
+            CreateProfile createProfile = new CreateProfile();
+            createProfile.FullName.Text = profile.Fullname;
+            createProfile.FullName.IsEnabled = false;
+            createProfile.DateBirth.Text = profile.BirthDate;
+            createProfile.CityBirth.Text = profile.BirthPlace;
+            createProfile.Address.Text = profile.Address;
+            createProfile.City.Text = profile.City;
+            createProfile.CreateProfileButton.Content = "Modifier le profile";
+            createProfile.ShowDialog();
+            _ = LoadProfilesFile();
         }
     }
 }

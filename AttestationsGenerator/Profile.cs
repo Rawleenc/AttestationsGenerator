@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AttestationsGenerator
 {
-    class Profile
+    public class Profile
     {
         public string Fullname { get; set; }
         public string BirthDate { get; set; }
@@ -21,6 +21,19 @@ namespace AttestationsGenerator
             this.BirthPlace = birthPlace;
             this.Address = address;
             this.City = city;
+        }
+
+        public override bool Equals(object obj)
+        {
+            return obj is Profile profile &&
+                   Fullname == profile.Fullname;
+        }
+
+        public override int GetHashCode()
+        {
+            int hashCode = 1578132623;
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Fullname);
+            return hashCode;
         }
     }
 }

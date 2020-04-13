@@ -3,21 +3,45 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:AttestationsGenerator"
         mc:Ignorable="d"
-        Title="Créer un profile" Height="230" Width="320">
-    <Grid>
-        <Label Content="Nom complet : " HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="FullName" HorizontalAlignment="Left" Margin="150,17,0,0" VerticalAlignment="Top" Width="152"/>
-        <Label Content="Date de naissance :" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="DateBirth" HorizontalAlignment="Left" Margin="150,47,0,0" VerticalAlignment="Top" Width="152"/>
-        <Label Content="Lieu de naissance :" HorizontalAlignment="Left" Margin="10,70,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="CityBirth" HorizontalAlignment="Left" Margin="150,77,0,0" VerticalAlignment="Top" Width="152"/>
-        <Label Content="Adresse :" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="Address" HorizontalAlignment="Left" Margin="150,107,0,0" VerticalAlignment="Top" Width="152"/>
-        <Label Content="Ville : " HorizontalAlignment="Left" Margin="10,130,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="City" HorizontalAlignment="Left" Margin="150,137,0,0" VerticalAlignment="Top" Width="152"/>
-        <Button Content="Créer le profile" HorizontalAlignment="Left" Margin="110,170,0,0" VerticalAlignment="Top" Width="100" Click="Create_Profile"/>
-
+        Title="Créer un profile" Height="225" Width="318" ResizeMode="NoResize">
+    <Window.Resources>
+        <Style x:Key="placeHolder" TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBox}">
+                        <Grid>
+                            <TextBox Text="{Binding Path=Text,
+                                                RelativeSource={RelativeSource TemplatedParent}, 
+                                                Mode=TwoWay,
+                                                UpdateSourceTrigger=PropertyChanged}"
+                                 x:Name="textSource" 
+                                 Background="Transparent" 
+                                 Panel.ZIndex="2" />
+                            <TextBox Text="{TemplateBinding Tag}" Background="{TemplateBinding Background}" Panel.ZIndex="1">
+                                <TextBox.Style>
+                                    <Style TargetType="{x:Type TextBox}">
+                                        <Setter Property="Foreground" Value="Transparent"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Path=Text, Source={x:Reference textSource}}" Value="">
+                                                <Setter Property="Foreground" Value="LightGray"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBox.Style>
+                            </TextBox>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid Margin="0,0,0,0">
+        <TextBox Style="{StaticResource placeHolder}" Tag="Nom complet" x:Name="FullName" Margin="10,10,10,0" VerticalAlignment="Top" FontSize="16" KeyUp="OnKeyUpHandler"/>
+        <TextBox Style="{StaticResource placeHolder}" Tag="Date de naissance" x:Name="DateBirth" Margin="10,38,10,0" VerticalAlignment="Top" FontSize="16" KeyUp="OnKeyUpHandler"/>
+        <TextBox Style="{StaticResource placeHolder}" Tag="Lieu de naissance" x:Name="CityBirth" Margin="10,66,10,0" VerticalAlignment="Top" FontSize="16" KeyUp="OnKeyUpHandler"/>
+        <TextBox Style="{StaticResource placeHolder}" Tag="Adresse" x:Name="Address" Margin="10,94,10,0" VerticalAlignment="Top" FontSize="16" KeyUp="OnKeyUpHandler"/>
+        <TextBox Style="{StaticResource placeHolder}" Tag="Ville" x:Name="City" Margin="10,122,10,0" VerticalAlignment="Top" FontSize="16" KeyUp="OnKeyUpHandler"/>
+        <Button x:Name="CreateProfileButton" Content="Créer le profile" Margin="10,150,10,10" Click="Create_Profile"/>
     </Grid>
 </Window>

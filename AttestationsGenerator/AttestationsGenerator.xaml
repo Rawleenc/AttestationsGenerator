@@ -3,18 +3,19 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:AttestationsGenerator"
         mc:Ignorable="d"
-        Title="Générateur d'attestation" Height="167" Width="317" ResizeMode="CanMinimize">
+        Title="Générateur d'attestation" Height="167" Width="358" ResizeMode="CanMinimize">
     <DockPanel Loaded="Window_Loaded">
         <Menu DockPanel.Dock="Top" Height="23">
             <MenuItem Header="_Options" Height="23">
                 <MenuItem Header="_Créer un profile"  Click="Create_Profile_Click" />
+                <MenuItem Header="_Modifier un profile" Click="Modify_Profile_Click"/>
+                <MenuItem Header="_Supprimer un profile" Click="Delete_Profile_Click"/>
                 <MenuItem Header="_Générer un template de fichier profiles.json"  Click="Generate_Profiles_Click" />
                 <MenuItem Header="_Charger le fichier profiles.json"  Click="Load_Profiles_Click" />
             </MenuItem>
         </Menu>
-        <Grid>
+        <Grid Margin="0,0,0,0">
             <ComboBox Name="Profiles_ComboBox" Margin="10,10,10,0" VerticalAlignment="Top"/>
             <ComboBox Name="Exit_Reasons_ComboBox" Margin="10,37,10,0" VerticalAlignment="Top" SelectedIndex="0">
                 <ComboBoxItem>Déplacements entre domicile et travail</ComboBoxItem>
