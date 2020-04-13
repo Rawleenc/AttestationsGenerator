@@ -101,6 +101,15 @@ namespace AttestationsGenerator
 
         private Profile GetFromFullName(string fullname) => profiles.Find(profil => profil.Fullname == fullname);
 
+        private void Create_Profile_Click(object sender, RoutedEventArgs e)
+        {
+            new CreateProfile().ShowDialog();
+            if (LoadProfilesFile())
+            {
+                _ = MessageBox.Show("Votre fichier profiles.json à été correctement lu.", "Réussite", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
+
         private void Generate_Profiles_Click(object sender, RoutedEventArgs e)
         {
             string path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
