@@ -429,15 +429,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Générateur d'attestation"
-        "ProductCode" = "8:{1F0D7D40-C7BB-4A5A-8FD8-7553070FB7E6}"
-        "PackageCode" = "8:{F9DF8554-F524-4591-AB3D-49276E113055}"
+        "ProductCode" = "8:{A006FD4A-3656-495F-B3D3-3C04E13A07CB}"
+        "PackageCode" = "8:{0DDA329E-79A2-42A5-A0FE-7791B15D1FDA}"
         "UpgradeCode" = "8:{3A184958-1664-4602-BDA6-DAB7424E4270}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.0.3"
+        "ProductVersion" = "8:1.0.4"
         "Manufacturer" = "8:BabaWorld"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -965,7 +965,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_825E0423722B445EA90B777D55F5FD77"
             {
-            "SourcePath" = "8:..\\AttestationsGenerator\\obj\\Release\\AttestationsGenerator.exe"
+            "SourcePath" = "8:"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_4DE44A582CA34D3FA3FEFB7867A402F8"

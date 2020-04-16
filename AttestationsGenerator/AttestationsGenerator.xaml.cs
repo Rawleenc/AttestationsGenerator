@@ -223,6 +223,7 @@ namespace AttestationsGenerator
             createProfile.Address.Text = profile.Address;
             createProfile.City.Text = profile.City;
             createProfile.CreateProfileButton.Content = "Modifier le profile";
+            createProfile.Title = "Modifier un profile";
             createProfile.ShowDialog();
             _ = LoadProfilesFile();
         }
