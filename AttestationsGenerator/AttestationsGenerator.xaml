@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Générateur d'attestation" Height="167" Width="358" ResizeMode="CanMinimize">
+        Title="Générateur d'attestation" Height="208" Width="358" ResizeMode="CanMinimize">
     <DockPanel Loaded="Window_Loaded">
         <Menu DockPanel.Dock="Top" Height="23">
             <MenuItem Header="_Options" Height="23">
@@ -16,8 +16,10 @@
             </MenuItem>
         </Menu>
         <Grid Margin="0,0,0,0">
-            <ComboBox Name="Profiles_ComboBox" Margin="10,10,10,0" VerticalAlignment="Top"/>
-            <ComboBox Name="Exit_Reasons_ComboBox" Margin="10,37,10,0" VerticalAlignment="Top" SelectedIndex="0">
+            <Label Padding="0,0,0,0" Margin="10,10,10,0" VerticalAlignment="Top">Profile</Label>
+            <ComboBox Name="Profiles_ComboBox" Margin="10,26,10,0" VerticalAlignment="Top"/>
+            <Label Padding="0,0,0,0" Margin="10,53,10,0" VerticalAlignment="Top">Raison de sortie</Label>
+            <ComboBox Name="Exit_Reasons_ComboBox" Margin="10,69,10,0" VerticalAlignment="Top" SelectedIndex="0">
                 <ComboBoxItem>Déplacements entre domicile et travail</ComboBoxItem>
                 <ComboBoxItem>Déplacements achats nécéssaires</ComboBoxItem>
                 <ComboBoxItem>Consultations et soins</ComboBoxItem>
@@ -26,7 +28,8 @@
                 <ComboBoxItem>Convcation judiciaire ou administrative</ComboBoxItem>
                 <ComboBoxItem>Mission d'intérêt général</ComboBoxItem>
             </ComboBox>
-            <Button Content="Générer l'attestation" Margin="10,64,10,10" Click="Button_Click"/>
+            <Button Content="Générer l'attestation" Margin="10,100
+                    ,10,10" Click="Button_Click"/>
         </Grid>
     </DockPanel>
 </Window>

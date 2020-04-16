@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Créer un profile" Height="225" Width="318" ResizeMode="NoResize">
+        Title="Créer un profile" Height="278" Width="370" ResizeMode="NoResize">
     <Window.Resources>
         <Style x:Key="placeHolder" TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type TextBox}}">
             <Setter Property="Template">
@@ -17,8 +17,8 @@
                                                 UpdateSourceTrigger=PropertyChanged}"
                                  x:Name="textSource" 
                                  Background="Transparent" 
-                                 Panel.ZIndex="2" />
-                            <TextBox Text="{TemplateBinding Tag}" Background="{TemplateBinding Background}" Panel.ZIndex="1">
+                                 Panel.ZIndex="2" VerticalContentAlignment="Center" />
+                            <TextBox Text="{TemplateBinding Tag}" Background="{TemplateBinding Background}" Panel.ZIndex="1" VerticalContentAlignment="Center">
                                 <TextBox.Style>
                                     <Style TargetType="{x:Type TextBox}">
                                         <Setter Property="Foreground" Value="Transparent"/>
@@ -37,11 +37,16 @@
         </Style>
     </Window.Resources>
     <Grid Margin="0,0,0,0">
-        <TextBox Style="{StaticResource placeHolder}" Tag="Nom complet" x:Name="FullName" Margin="10,10,10,0" VerticalAlignment="Top" FontSize="16" KeyUp="OnKeyUpHandler"/>
-        <TextBox Style="{StaticResource placeHolder}" Tag="Date de naissance" x:Name="DateBirth" Margin="10,38,10,0" VerticalAlignment="Top" FontSize="16" KeyUp="OnKeyUpHandler"/>
-        <TextBox Style="{StaticResource placeHolder}" Tag="Lieu de naissance" x:Name="CityBirth" Margin="10,66,10,0" VerticalAlignment="Top" FontSize="16" KeyUp="OnKeyUpHandler"/>
-        <TextBox Style="{StaticResource placeHolder}" Tag="Adresse" x:Name="Address" Margin="10,94,10,0" VerticalAlignment="Top" FontSize="16" KeyUp="OnKeyUpHandler"/>
-        <TextBox Style="{StaticResource placeHolder}" Tag="Ville" x:Name="City" Margin="10,122,10,0" VerticalAlignment="Top" FontSize="16" KeyUp="OnKeyUpHandler"/>
-        <Button x:Name="CreateProfileButton" Content="Créer le profile" Margin="10,150,10,10" Click="Create_Profile"/>
+        <Label Padding="0,0,0,0" Margin="10,10,10,0" VerticalAlignment="Top">Nom complet</Label>
+        <TextBox Style="{StaticResource placeHolder}" Tag="Prénom NOM" x:Name="FullName" Margin="10,26,10,0" Padding="10,10,10,10" VerticalAlignment="Top" KeyUp="OnKeyUpHandler" Height="22" VerticalContentAlignment="Center"/>
+        <Label Padding="0,0,0,0" Margin="10,53,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="160">Date de naissance</Label>
+        <TextBox Style="{StaticResource placeHolder}" Tag="01 Janvier 1901" x:Name="DateBirth" Margin="10,69,0,0" Padding="10,10,10,10" VerticalAlignment="Top" KeyUp="OnKeyUpHandler" HorizontalAlignment="Left" Width="160" Height="22" VerticalContentAlignment="Center"/>
+        <Label Padding="0,0,0,0" Margin="0,53,10,0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="160">Lieu de naissance</Label>
+        <TextBox Style="{StaticResource placeHolder}" Tag="Paris 1er arrondissement" x:Name="CityBirth" Margin="0,69,10,0" Padding="10,10,10,10" VerticalAlignment="Top" KeyUp="OnKeyUpHandler" HorizontalAlignment="Right" Width="160" Height="22" VerticalContentAlignment="Center"/>
+        <Label Padding="0,0,0,0" Margin="10,96,10,0" VerticalAlignment="Top">Adresse</Label>
+        <TextBox Style="{StaticResource placeHolder}" Tag="1 Rue Cambon 75001 Paris" x:Name="Address" Margin="10,112,10,0" Padding="10,10,10,10" VerticalAlignment="Top" KeyUp="OnKeyUpHandler" Height="22" VerticalContentAlignment="Center"/>
+        <Label Padding="0,0,0,0" Margin="10,139,10,0" VerticalAlignment="Top">Ville (Fait à)</Label>
+        <TextBox Style="{StaticResource placeHolder}" Tag="Paris" x:Name="City" Margin="10,155,10,0" VerticalAlignment="Top" KeyUp="OnKeyUpHandler" Height="22"/>
+        <Button x:Name="CreateProfileButton" Content="Créer le profile" Margin="10,190,10,10" Click="Create_Profile"/>
     </Grid>
 </Window>
